@@ -50,6 +50,8 @@ public class Ingresar extends javax.swing.JFrame {
         confirmar_text = new javax.swing.JPasswordField();
         regresoBtm = new javax.swing.JButton();
         registarseBtm = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        usuario_text1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,18 +76,18 @@ public class Ingresar extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("nombre");
+        jLabel4.setText("Nombre");
         bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 110, 30));
 
         jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("No.DPI");
+        jLabel5.setText("NIT");
         bg.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
 
         nombre_text.setBackground(new java.awt.Color(0, 0, 0));
         nombre_text.setFont(new java.awt.Font("Roboto Light", 0, 10)); // NOI18N
         nombre_text.setForeground(new java.awt.Color(204, 204, 204));
-        nombre_text.setText("ingrese su nombre completo");
+        nombre_text.setText("ingrese sus nombre ");
         nombre_text.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 nombre_textMousePressed(evt);
@@ -96,7 +98,7 @@ public class Ingresar extends javax.swing.JFrame {
         DPI_text.setBackground(new java.awt.Color(0, 0, 0));
         DPI_text.setFont(new java.awt.Font("Roboto Light", 0, 10)); // NOI18N
         DPI_text.setForeground(new java.awt.Color(204, 204, 204));
-        DPI_text.setText("ingrese su DPI");
+        DPI_text.setText("ingrese su NIT");
         DPI_text.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 DPI_textMousePressed(evt);
@@ -107,13 +109,13 @@ public class Ingresar extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Nacionalidad");
+        jLabel6.setText("Apellido");
         bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 160, -1));
 
         nacionalidad_text.setBackground(new java.awt.Color(0, 0, 0));
         nacionalidad_text.setFont(new java.awt.Font("Roboto Light", 0, 10)); // NOI18N
         nacionalidad_text.setForeground(new java.awt.Color(204, 204, 204));
-        nacionalidad_text.setText("ingrese su nacionalidad");
+        nacionalidad_text.setText("ingrese sus apellidos");
         nacionalidad_text.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 nacionalidad_textMousePressed(evt);
@@ -129,7 +131,7 @@ public class Ingresar extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Fecha de nacimiento");
-        bg.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 150, 20));
+        bg.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 150, 20));
 
         nacimiento_text.setBackground(new java.awt.Color(0, 0, 0));
         nacimiento_text.setFont(new java.awt.Font("Roboto Light", 0, 10)); // NOI18N
@@ -140,7 +142,7 @@ public class Ingresar extends javax.swing.JFrame {
                 nacimiento_textMousePressed(evt);
             }
         });
-        bg.add(nacimiento_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 120, -1));
+        bg.add(nacimiento_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 120, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,6 +214,27 @@ public class Ingresar extends javax.swing.JFrame {
             }
         });
         bg.add(registarseBtm, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 441, 140, 40));
+
+        jLabel11.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Usuario");
+        bg.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 150, 20));
+
+        usuario_text1.setBackground(new java.awt.Color(0, 0, 0));
+        usuario_text1.setFont(new java.awt.Font("Roboto Light", 0, 10)); // NOI18N
+        usuario_text1.setForeground(new java.awt.Color(204, 204, 204));
+        usuario_text1.setText("cree un usuario");
+        usuario_text1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                usuario_text1MousePressed(evt);
+            }
+        });
+        usuario_text1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuario_text1ActionPerformed(evt);
+            }
+        });
+        bg.add(usuario_text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 120, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -328,6 +351,14 @@ public class Ingresar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_nacimiento_textMousePressed
 
+    private void usuario_text1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuario_text1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuario_text1MousePressed
+
+    private void usuario_text1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuario_text1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuario_text1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -372,6 +403,7 @@ public class Ingresar extends javax.swing.JFrame {
     private javax.swing.JLabel hotel_generico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -385,5 +417,6 @@ public class Ingresar extends javax.swing.JFrame {
     private javax.swing.JTextField nombre_text;
     private javax.swing.JButton registarseBtm;
     private javax.swing.JButton regresoBtm;
+    private javax.swing.JTextField usuario_text1;
     // End of variables declaration//GEN-END:variables
 }

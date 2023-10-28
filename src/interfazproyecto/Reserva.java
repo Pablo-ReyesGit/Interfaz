@@ -339,14 +339,14 @@ public class Reserva extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "debe seleccionar una fila para utilizar esta opcion ","ERROR AL MODIFICAR RESERVACION", JOptionPane.WARNING_MESSAGE);
     } else {
     fila = ReservacionA.getSelectedRow();
-    TxTFechaI.setText(modelo2.getValueAt(ReservacionA.getSelectedRow(), 1).toString());
-    TxTNoches.setText(modelo2.getValueAt(ReservacionA.getSelectedRow(), 2).toString());
+   // TxTFechaI.setText(modelo2.getValueAt(ReservacionA.getSelectedRow(), 1).toString());
+    //TxTNoches.setText(modelo2.getValueAt(ReservacionA.getSelectedRow(), 2).toString());
     }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    modelo2.setValueAt(TxTFechaI.getText().trim(), fila, 1);
-    modelo2.setValueAt(TxTNoches.getText().trim(), fila, 2);
+    //modelo2.setValueAt(TxTFechaI.getText().trim(), fila, 1);
+   // modelo2.setValueAt(TxTNoches.getText().trim(), fila, 2);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
