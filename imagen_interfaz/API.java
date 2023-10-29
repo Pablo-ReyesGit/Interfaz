@@ -122,6 +122,33 @@ public class API {
             e.printStackTrace();
         }
     }
+    
+    public void consumoUsuario(){
+        try{
+    URL url = new URL("http://127.0.0.1:8000/usuario/");
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    conn.setRequestMethod("GET");
+    conn.connect();
+    
+    int responseCode = conn.getResponseCode();
+    if (responseCode != 200){
+        throw new RuntimeException("Ocurrio un error fatal \n " + responseCode);
+    } else {
+        StringBuilder informationString = new StringBuilder();
+        Scanner scaner = new Scanner(url.openStream());
+        
+        while(scaner.hasNext()){
+            informationString.append(scaner.nextLine());  
+        }
+        
+        scaner.close();
+        
+        System.out.println(informationString);
+    }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         // TODO code application logic here
     }
