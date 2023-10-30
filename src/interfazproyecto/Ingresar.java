@@ -271,17 +271,6 @@ public class Ingresar extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_nombre_textMousePressed
 
-    private void DPI_textMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DPI_textMousePressed
-     if( String.valueOf(DPI_text.getText()).equals("ingrese su DPI")){
-    DPI_text.setText("");
-    DPI_text.setForeground(Color.white);
-    }
-    if(nombre_text.getText().isEmpty()){
-    nombre_text.setText("ingrese su nombre completo");
-    nombre_text.setForeground(Color.gray);
-    }
-    }//GEN-LAST:event_DPI_textMousePressed
-
     private void nacionalidad_textMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nacionalidad_textMousePressed
         if(nacionalidad_text.getText().equals("ingrese su nacionalidad")){
     nacionalidad_text.setText("");
@@ -358,6 +347,17 @@ public class Ingresar extends javax.swing.JFrame {
     private void usuario_text1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuario_text1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usuario_text1ActionPerformed
+
+    private void DPI_textMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DPI_textMousePressed
+        if( String.valueOf(DPI_text.getText()).equals("ingrese su DPI")){
+            DPI_text.setText("");
+            DPI_text.setForeground(Color.white);
+        }
+        if(nombre_text.getText().isEmpty()){
+            nombre_text.setText("ingrese su nombre completo");
+            nombre_text.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_DPI_textMousePressed
 
     /**
      * @param args the command line arguments

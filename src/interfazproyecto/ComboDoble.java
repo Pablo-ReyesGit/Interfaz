@@ -6,7 +6,9 @@
 package interfazproyecto;
 
 import java.awt.Image;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -43,6 +45,7 @@ public class ComboDoble extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
         setImageLabel(Fondo_madera, "C:src\\imagen_interfaz\\madera.jpg");
+        setImageLabel(DobleC, "C:src\\imagen_interfaz\\Pareja.jfif");
         DefaultComboBoxModel ComboModel = new DefaultComboBoxModel(combos);
         
         ComCombos.setModel(ComboModel);
@@ -68,7 +71,7 @@ public class ComboDoble extends javax.swing.JFrame {
         Hotel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         Fondo_madera1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        DobleC = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -157,9 +160,9 @@ public class ComboDoble extends javax.swing.JFrame {
         Fondo_madera1.setText("jLabel1");
         bd1.add(Fondo_madera1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 750, 140));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen_interfaz/habitacion_2.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        bd1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 330, 290));
+        DobleC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen_interfaz/habitacion_2.jpg"))); // NOI18N
+        DobleC.setText("jLabel1");
+        bd1.add(DobleC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 330, 290));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -369,30 +372,45 @@ public class ComboDoble extends javax.swing.JFrame {
     }//GEN-LAST:event_SpnNochesStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int dia = (int) diasInicio.getValue();
-        int mes = (int) MesInicio.getValue();
-        int año = (int) YearInicio.getValue();
-        String InicioEstadia = dia + "/" + mes + "/" + año;
+    int dia = (int) diasInicio.getValue();
+    int mes = (int) MesInicio.getValue();
+    int año = (int) YearInicio.getValue();
+    int noches = (int) SpnNoches.getValue();
 
-        FacturaCarrito carrito = new FacturaCarrito();
-        carrito.setId(ComCombos.getSelectedIndex());
-        carrito.setCombo(ComCombos.getSelectedItem().toString());
-        carrito.setInicioEstadia(InicioEstadia);
-        if(noche == 0){
+    // Calcula la fecha de inicio
+    Calendar calendarInicio = Calendar.getInstance();
+    calendarInicio.set(año, mes - 1, dia); // El mes es de base 0, así que resta 1
+
+    // Realiza la operación matemática para calcular la fecha de salida
+    Calendar calendarSalida = (Calendar) calendarInicio.clone(); // Clona el calendario de inicio
+    calendarSalida.add(Calendar.DAY_OF_MONTH, noches); // Agrega el número de noches para obtener la fecha de salida
+
+    // Formatea la fecha de inicio y la fecha de salida
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    String fechaInicio = dateFormat.format(calendarInicio.getTime());
+    String fechaSalida = dateFormat.format(calendarSalida.getTime());
+
+    FacturaCarrito carrito = new FacturaCarrito();
+    carrito.setId(ComCombos.getSelectedIndex());
+    carrito.setCombo(ComCombos.getSelectedItem().toString());
+    carrito.setInicioEstadia(fechaInicio);
+    
+    if(noche == 0){
         noche += 1;
-        }
-        if(precio == 0){
-        precio += 160;
-        }
-        carrito.setPrecio(precio*noche);
-        carrito.setNoches(noche);
+    }
+    
+    if(precio == 0){
+        precio += 200;
+    }
+    
+    carrito.setPrecio(precio * noche);
+    carrito.setNoches(fechaSalida);
 
-        ListaVenta.add(carrito);
+    ListaVenta.add(carrito);
 
-        Carrito formCarrito = new Carrito(ListaVenta);
-        formCarrito.setVisible(true);
-        this.setVisible(false);
-
+    Carrito formCarrito = new Carrito(ListaVenta);
+    formCarrito.setVisible(true);
+    this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ComCombos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComCombos1ActionPerformed
@@ -457,6 +475,7 @@ public class ComboDoble extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComCombos;
     public static javax.swing.JComboBox<String> ComCombos1;
+    public javax.swing.JLabel DobleC;
     private javax.swing.JLabel Fondo_madera;
     private javax.swing.JLabel Fondo_madera1;
     private javax.swing.JLabel Fondo_madera2;
@@ -476,7 +495,6 @@ public class ComboDoble extends javax.swing.JFrame {
     private javax.swing.JPanel bd2;
     private javax.swing.JSpinner diasInicio;
     private javax.swing.JButton jButton1;
-    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -6,7 +6,9 @@
 package interfazproyecto;
 
 import java.awt.Image;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -31,6 +33,7 @@ public class ComboSimple extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
         setImageLabel(Fondo_madera, "C:src\\imagen_interfaz\\madera.jpg");
+        setImageLabel(Simple, "C:src\\imagen_interfaz\\persona.jfif");
         DefaultComboBoxModel ComboModel = new DefaultComboBoxModel(combos);
         ComCombos.setModel(ComboModel);
         
@@ -60,19 +63,20 @@ public class ComboSimple extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        YearInicio = new javax.swing.JSpinner();
+        diasInicio = new javax.swing.JSpinner();
         bd = new javax.swing.JPanel();
         Hotel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         Fondo_madera = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Simple = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         ComCombos = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        YearInicio = new javax.swing.JSpinner();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
@@ -80,9 +84,14 @@ public class ComboSimple extends javax.swing.JFrame {
         Unitario = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         SpnNoches = new javax.swing.JSpinner();
-        diasInicio = new javax.swing.JSpinner();
         MesInicio = new javax.swing.JSpinner();
         Total = new javax.swing.JLabel();
+        diasInicio1 = new javax.swing.JSpinner();
+        YearInicio1 = new javax.swing.JSpinner();
+
+        YearInicio.setModel(new javax.swing.SpinnerNumberModel(2023, 2023, null, 1));
+
+        diasInicio.setModel(new javax.swing.SpinnerNumberModel(1, null, 31, 1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,8 +123,8 @@ public class ComboSimple extends javax.swing.JFrame {
         Fondo_madera.setText("jLabel1");
         bd.add(Fondo_madera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 750, 140));
 
-        jLabel1.setText("jLabel1");
-        bd.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 330, 290));
+        Simple.setText("jLabel1");
+        bd.add(Simple, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 330, 290));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,7 +138,7 @@ public class ComboSimple extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("noches");
+        jLabel4.setText("Fecha de Salida");
         bd.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
 
         ComCombos.setBackground(new java.awt.Color(102, 102, 102));
@@ -151,9 +160,6 @@ public class ComboSimple extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("fecha de inicio");
         bd.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
-
-        YearInicio.setModel(new javax.swing.SpinnerNumberModel(2023, 2023, null, 1));
-        bd.add(YearInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         bd.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 350, 10));
@@ -187,9 +193,6 @@ public class ComboSimple extends javax.swing.JFrame {
         });
         bd.add(SpnNoches, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
 
-        diasInicio.setModel(new javax.swing.SpinnerNumberModel(1, null, 31, 1));
-        bd.add(diasInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
-
         MesInicio.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
         bd.add(MesInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, -1));
 
@@ -197,6 +200,12 @@ public class ComboSimple extends javax.swing.JFrame {
         Total.setForeground(new java.awt.Color(255, 255, 255));
         Total.setText("60.0Q");
         bd.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, -1, -1));
+
+        diasInicio1.setModel(new javax.swing.SpinnerNumberModel(1, null, 31, 1));
+        bd.add(diasInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
+
+        YearInicio1.setModel(new javax.swing.SpinnerNumberModel(2023, 2023, null, 1));
+        bd.add(YearInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,27 +233,42 @@ public class ComboSimple extends javax.swing.JFrame {
     int dia = (int) diasInicio.getValue();
     int mes = (int) MesInicio.getValue();
     int año = (int) YearInicio.getValue();
-    String InicioEstadia = dia + "/" + mes + "/" + año;
-        
+    int noches = (int) SpnNoches.getValue();
+
+    // Calcula la fecha de inicio
+    Calendar calendarInicio = Calendar.getInstance();
+    calendarInicio.set(año, mes - 1, dia); // El mes es de base 0, así que resta 1
+
+    // Realiza la operación matemática para calcular la fecha de salida
+    Calendar calendarSalida = (Calendar) calendarInicio.clone(); // Clona el calendario de inicio
+    calendarSalida.add(Calendar.DAY_OF_MONTH, noches); // Agrega el número de noches para obtener la fecha de salida
+
+    // Formatea la fecha de inicio y la fecha de salida
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    String fechaInicio = dateFormat.format(calendarInicio.getTime());
+    String fechaSalida = dateFormat.format(calendarSalida.getTime());
+
     FacturaCarrito carrito = new FacturaCarrito();
     carrito.setId(ComCombos.getSelectedIndex());
     carrito.setCombo(ComCombos.getSelectedItem().toString());
-    carrito.setInicioEstadia(InicioEstadia);
+    carrito.setInicioEstadia(fechaInicio);
+    
     if(noche == 0){
         noche += 1;
     }
+    
     if(precioU == 0){
-        precioU += 60;
+        precioU += 200;
     }
-    carrito.setPrecio(precioU*noche);
-    carrito.setNoches(noche);
     
+    carrito.setPrecio(precioU * noche);
+    carrito.setNoches(fechaSalida);
+
     ListaVenta.add(carrito);
-    
+
     Carrito formCarrito = new Carrito(ListaVenta);
     formCarrito.setVisible(true);
     this.setVisible(false);
-    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void CalcularPrecio(){
@@ -299,14 +323,16 @@ public class ComboSimple extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo_madera;
     private javax.swing.JLabel Hotel;
     private javax.swing.JSpinner MesInicio;
+    private javax.swing.JLabel Simple;
     private javax.swing.JSpinner SpnNoches;
     private javax.swing.JLabel Total;
     private javax.swing.JLabel Unitario;
     private javax.swing.JSpinner YearInicio;
+    private javax.swing.JSpinner YearInicio1;
     private javax.swing.JPanel bd;
     private javax.swing.JSpinner diasInicio;
+    private javax.swing.JSpinner diasInicio1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

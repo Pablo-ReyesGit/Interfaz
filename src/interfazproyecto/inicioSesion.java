@@ -258,54 +258,9 @@ public class inicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_InicioSesionBtmMousePressed
 
     private void InicioSesionBtmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSesionBtmActionPerformed
-   //Seleccion abrir = new Seleccion();
-    //abrir.setVisible(true);
-    //this.setVisible(false);
-    try {
-        // URL de la API de Django para la autenticación de usuarios
-        String apiUrl = "http://127.0.0.1:8000/usuario/";
-
-        // Datos de inicio de sesión
-        String usuario = usuario_text.getText();
-        String contrasena = String.valueOf(contrasena_text.getPassword());
-
-        // Crear la URL
-        URL url = new URL(apiUrl);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-        // Configurar la conexión para enviar datos
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setDoOutput(true);
-
-        // Crear el JSON con los datos de inicio de sesión
-        JSONObject jsonInput = new JSONObject();
-        jsonInput.put("usuario", usuario);
-        jsonInput.put("contrasena", contrasena);
-
-        // Enviar los datos como JSON
-        OutputStream os = connection.getOutputStream();
-        os.write(jsonInput.toString().getBytes());
-        os.flush();
-        os.close();
-
-        // Obtener la respuesta de la API
-        int responseCode = connection.getResponseCode();
-        if (responseCode == 200) {
-            // Inicio de sesión exitoso, redirigir a la siguiente ventana
-             Seleccion abrir = new Seleccion();
-            abrir.setVisible(true);
-            this.setVisible(false);
-        } else {
-            // Inicio de sesión fallido, mostrar un mensaje de error
-            JOptionPane.showMessageDialog(this, "Verifique los datos de inicio de sesión", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
-    } catch (IOException e) {
-        e.printStackTrace();
-        // Manejo de errores de conexión o lectura de respuesta
-        JOptionPane.showMessageDialog(this, "Error de conexión", "Error", JOptionPane.ERROR_MESSAGE);
-    }
+    Seleccion abrir = new Seleccion();
+    abrir.setVisible(true);
+    this.setVisible(false);
     
     }//GEN-LAST:event_InicioSesionBtmActionPerformed
 

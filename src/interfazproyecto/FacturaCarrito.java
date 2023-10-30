@@ -13,10 +13,10 @@ public class FacturaCarrito {
     private int id;
     private String combo;
     private String InicioEstadia;
-    private int noches;
+    private String noches;
     private double precio;
 
-    public FacturaCarrito(String combo, String inicioEstadia, int noches, double precio) {
+    public FacturaCarrito(String combo, String inicioEstadia, String noches, double precio) {
         this.combo = combo;
         this.InicioEstadia = inicioEstadia;
         this.noches = noches;
@@ -74,14 +74,14 @@ public class FacturaCarrito {
     /**
      * @return the noches
      */
-    public int getNoches() {
+    public String getNoches() {
         return noches;
     }
 
     /**
      * @param noches the noches to set
      */
-    public void setNoches(int noches) {
+    public void setNoches(String noches) {
         this.noches = noches;
     }
 

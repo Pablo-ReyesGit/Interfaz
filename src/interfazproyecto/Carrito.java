@@ -24,8 +24,8 @@ import javax.swing.table.DefaultTableModel;
  * @author pablo
  */
 public class Carrito extends javax.swing.JFrame implements Printable{
-    DefaultTableModel modelo = new DefaultTableModel();
-    ArrayList<FacturaCarrito> compra;
+    private DefaultTableModel modelo = new DefaultTableModel();
+    private ArrayList<FacturaCarrito> compra;
     
     /**
      * Creates new form Carrito
@@ -50,26 +50,26 @@ public class Carrito extends javax.swing.JFrame implements Printable{
     }
 
     public void ActualizarTabla(){
-    while (modelo.getRowCount()>0){
-        modelo.removeRow(0);
+    while (getModelo().getRowCount()>0){
+            getModelo().removeRow(0);
     }
        
     double subtotal=0;
-    for(FacturaCarrito FC : compra){
+    for(FacturaCarrito FC : getCompra()){
         Object x[] = new Object[4];
         x[0] = FC.getCombo();
         x[1] = FC.getInicioEstadia();
         x[2] = FC.getNoches();
         x[3] = FC.getPrecio();
-        modelo.addRow(x);
+            getModelo().addRow(x);
         subtotal += FC.getPrecio();
     }
     
-    Total.setText(aMoneda(subtotal));
+        getTotal().setText(aMoneda(subtotal));
     double iva = subtotal*0.12;
-    IVA.setText(aMoneda(iva));
+        getIVA().setText(aMoneda(iva));
     
-    TblCombos.setModel(modelo);
+        getTblCombos().setModel(getModelo());
     }
     public String aMoneda(double precio){
         return Math.round(precio*100.0)/100.0 + " Q";
@@ -324,7 +324,7 @@ public class Carrito extends javax.swing.JFrame implements Printable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-    Seleccion abrir = new Seleccion(compra);
+    Seleccion abrir = new Seleccion(getCompra());
     abrir.setVisible(true);
     this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -342,12 +342,12 @@ public class Carrito extends javax.swing.JFrame implements Printable{
     } catch (PrinterException pex) {
         JOptionPane.showMessageDialog(null, "Lo sentimos, hubo un error en el programa. Error: " + pex, "Error", JOptionPane.INFORMATION_MESSAGE);
     }
-        for (int i = 0; i < TblCombos.getRowCount(); i++) {
+        for (int i = 0; i < getTblCombos().getRowCount(); i++) {
     String ComboF, fechaEstadiaF, nochesF, precioF;
-    ComboF = TblCombos.getValueAt(i, 0).toString();
-    fechaEstadiaF = TblCombos.getValueAt(i, 1).toString();
-    nochesF = TblCombos.getValueAt(i, 2).toString();
-    precioF = TblCombos.getValueAt(i, 3).toString();
+    ComboF = getTblCombos().getValueAt(i, 0).toString();
+    fechaEstadiaF = getTblCombos().getValueAt(i, 1).toString();
+    nochesF = getTblCombos().getValueAt(i, 2).toString();
+    precioF = getTblCombos().getValueAt(i, 3).toString();
 
     String datos [] = {ComboF, fechaEstadiaF, nochesF, precioF};
     
@@ -359,7 +359,7 @@ public class Carrito extends javax.swing.JFrame implements Printable{
     }//GEN-LAST:event_Imprimir
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    compra.clear();
+        getCompra().clear();
     ActualizarTabla();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -376,7 +376,7 @@ public class Carrito extends javax.swing.JFrame implements Printable{
     }//GEN-LAST:event_TblCombosKeyPressed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Reserva abrir = new Reserva(compra);
+        Reserva abrir = new Reserva(getCompra());
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -460,7 +460,385 @@ public class Carrito extends javax.swing.JFrame implements Printable{
         hub.translate(pagfor.getImageableX() * 30, pagfor.getImageableY() * 30);
         hub.scale(1.0, 1.0);
         
-        PanelFactura.print(graf);
+        getPanelFactura().print(graf);
         return PAGE_EXISTS;
+    }
+
+    /**
+     * @return the modelo
+     */
+    public DefaultTableModel getModelo() {
+        return modelo;
+    }
+
+    /**
+     * @param modelo the modelo to set
+     */
+    public void setModelo(DefaultTableModel modelo) {
+        this.modelo = modelo;
+    }
+
+    /**
+     * @return the compra
+     */
+    public ArrayList<FacturaCarrito> getCompra() {
+        return compra;
+    }
+
+    /**
+     * @param compra the compra to set
+     */
+    public void setCompra(ArrayList<FacturaCarrito> compra) {
+        this.compra = compra;
+    }
+
+    /**
+     * @return the CarritoComprasPNG
+     */
+    public javax.swing.JLabel getCarritoComprasPNG() {
+        return CarritoComprasPNG;
+    }
+
+    /**
+     * @param CarritoComprasPNG the CarritoComprasPNG to set
+     */
+    public void setCarritoComprasPNG(javax.swing.JLabel CarritoComprasPNG) {
+        this.CarritoComprasPNG = CarritoComprasPNG;
+    }
+
+    /**
+     * @return the IVA
+     */
+    public javax.swing.JLabel getIVA() {
+        return IVA;
+    }
+
+    /**
+     * @param IVA the IVA to set
+     */
+    public void setIVA(javax.swing.JLabel IVA) {
+        this.IVA = IVA;
+    }
+
+    /**
+     * @return the PanelFactura
+     */
+    public javax.swing.JPanel getPanelFactura() {
+        return PanelFactura;
+    }
+
+    /**
+     * @param PanelFactura the PanelFactura to set
+     */
+    public void setPanelFactura(javax.swing.JPanel PanelFactura) {
+        this.PanelFactura = PanelFactura;
+    }
+
+    /**
+     * @return the Reservar
+     */
+    public javax.swing.JButton getReservar() {
+        return Reservar;
+    }
+
+    /**
+     * @param Reservar the Reservar to set
+     */
+    public void setReservar(javax.swing.JButton Reservar) {
+        this.Reservar = Reservar;
+    }
+
+    /**
+     * @return the TblCombos
+     */
+    public javax.swing.JTable getTblCombos() {
+        return TblCombos;
+    }
+
+    /**
+     * @param TblCombos the TblCombos to set
+     */
+    public void setTblCombos(javax.swing.JTable TblCombos) {
+        this.TblCombos = TblCombos;
+    }
+
+    /**
+     * @return the Total
+     */
+    public javax.swing.JLabel getTotal() {
+        return Total;
+    }
+
+    /**
+     * @param Total the Total to set
+     */
+    public void setTotal(javax.swing.JLabel Total) {
+        this.Total = Total;
+    }
+
+    /**
+     * @return the jButton2
+     */
+    public javax.swing.JButton getjButton2() {
+        return jButton2;
+    }
+
+    /**
+     * @param jButton2 the jButton2 to set
+     */
+    public void setjButton2(javax.swing.JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    /**
+     * @return the jButton4
+     */
+    public javax.swing.JButton getjButton4() {
+        return jButton4;
+    }
+
+    /**
+     * @param jButton4 the jButton4 to set
+     */
+    public void setjButton4(javax.swing.JButton jButton4) {
+        this.jButton4 = jButton4;
+    }
+
+    /**
+     * @return the jButton5
+     */
+    public javax.swing.JButton getjButton5() {
+        return jButton5;
+    }
+
+    /**
+     * @param jButton5 the jButton5 to set
+     */
+    public void setjButton5(javax.swing.JButton jButton5) {
+        this.jButton5 = jButton5;
+    }
+
+    /**
+     * @return the jButton6
+     */
+    public javax.swing.JButton getjButton6() {
+        return jButton6;
+    }
+
+    /**
+     * @param jButton6 the jButton6 to set
+     */
+    public void setjButton6(javax.swing.JButton jButton6) {
+        this.jButton6 = jButton6;
+    }
+
+    /**
+     * @return the jButton7
+     */
+    public javax.swing.JButton getjButton7() {
+        return jButton7;
+    }
+
+    /**
+     * @param jButton7 the jButton7 to set
+     */
+    public void setjButton7(javax.swing.JButton jButton7) {
+        this.jButton7 = jButton7;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @param jLabel1 the jLabel1 to set
+     */
+    public void setjLabel1(javax.swing.JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    /**
+     * @return the jLabel10
+     */
+    public javax.swing.JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    /**
+     * @param jLabel10 the jLabel10 to set
+     */
+    public void setjLabel10(javax.swing.JLabel jLabel10) {
+        this.jLabel10 = jLabel10;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @param jLabel2 the jLabel2 to set
+     */
+    public void setjLabel2(javax.swing.JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    /**
+     * @return the jLabel3
+     */
+    public javax.swing.JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    /**
+     * @param jLabel3 the jLabel3 to set
+     */
+    public void setjLabel3(javax.swing.JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    /**
+     * @return the jLabel4
+     */
+    public javax.swing.JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    /**
+     * @param jLabel4 the jLabel4 to set
+     */
+    public void setjLabel4(javax.swing.JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    /**
+     * @return the jLabel5
+     */
+    public javax.swing.JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    /**
+     * @param jLabel5 the jLabel5 to set
+     */
+    public void setjLabel5(javax.swing.JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    /**
+     * @return the jLabel6
+     */
+    public javax.swing.JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    /**
+     * @param jLabel6 the jLabel6 to set
+     */
+    public void setjLabel6(javax.swing.JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    /**
+     * @return the jLabel7
+     */
+    public javax.swing.JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    /**
+     * @param jLabel7 the jLabel7 to set
+     */
+    public void setjLabel7(javax.swing.JLabel jLabel7) {
+        this.jLabel7 = jLabel7;
+    }
+
+    /**
+     * @return the jLabel8
+     */
+    public javax.swing.JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    /**
+     * @param jLabel8 the jLabel8 to set
+     */
+    public void setjLabel8(javax.swing.JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
+    }
+
+    /**
+     * @return the jLabel9
+     */
+    public javax.swing.JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    /**
+     * @param jLabel9 the jLabel9 to set
+     */
+    public void setjLabel9(javax.swing.JLabel jLabel9) {
+        this.jLabel9 = jLabel9;
+    }
+
+    /**
+     * @return the jPanel1
+     */
+    public javax.swing.JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    /**
+     * @param jPanel1 the jPanel1 to set
+     */
+    public void setjPanel1(javax.swing.JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    /**
+     * @return the jPanel5
+     */
+    public javax.swing.JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    /**
+     * @param jPanel5 the jPanel5 to set
+     */
+    public void setjPanel5(javax.swing.JPanel jPanel5) {
+        this.jPanel5 = jPanel5;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @param jScrollPane1 the jScrollPane1 to set
+     */
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    /**
+     * @return the jSeparator1
+     */
+    public javax.swing.JSeparator getjSeparator1() {
+        return jSeparator1;
+    }
+
+    /**
+     * @param jSeparator1 the jSeparator1 to set
+     */
+    public void setjSeparator1(javax.swing.JSeparator jSeparator1) {
+        this.jSeparator1 = jSeparator1;
     }
 }

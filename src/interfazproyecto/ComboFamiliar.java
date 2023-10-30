@@ -7,7 +7,9 @@ package interfazproyecto;
 
 import static interfazproyecto.ComboSimple.ComCombos;
 import java.awt.Image;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -31,6 +33,7 @@ public class ComboFamiliar extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
         setImageLabel(Fondo_madera, "C:src\\imagen_interfaz\\madera.jpg");
+        setImageLabel(Familiar, "C:src\\imagen_interfaz\\madera.jpg");
         DefaultComboBoxModel ComboModel = new DefaultComboBoxModel(combos);
         ComCombos.setModel(ComboModel);
         
@@ -61,14 +64,13 @@ public class ComboFamiliar extends javax.swing.JFrame {
         Hotel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         Fondo_madera1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Familiar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         ComCombos = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
@@ -76,7 +78,6 @@ public class ComboFamiliar extends javax.swing.JFrame {
         Unitario = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         SpnNoches = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
         Total = new javax.swing.JLabel();
         bd2 = new javax.swing.JPanel();
         Hotel2 = new javax.swing.JLabel();
@@ -101,6 +102,8 @@ public class ComboFamiliar extends javax.swing.JFrame {
         MesInicio = new javax.swing.JSpinner();
         Total1 = new javax.swing.JLabel();
         jSpinner3 = new javax.swing.JSpinner();
+        jSpinner5 = new javax.swing.JSpinner();
+        jSpinner2 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,8 +153,8 @@ public class ComboFamiliar extends javax.swing.JFrame {
         Fondo_madera1.setText("jLabel1");
         bd1.add(Fondo_madera1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 750, 140));
 
-        jLabel1.setText("jLabel1");
-        bd1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 330, 290));
+        Familiar.setText("jLabel1");
+        bd1.add(Familiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 330, 290));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -188,9 +191,6 @@ public class ComboFamiliar extends javax.swing.JFrame {
         jLabel6.setText("fecha de inicio");
         bd1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(2023, 2023, null, 1));
-        bd1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, -1, -1));
-
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         bd1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 350, 10));
 
@@ -222,9 +222,6 @@ public class ComboFamiliar extends javax.swing.JFrame {
             }
         });
         bd1.add(SpnNoches, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
-
-        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        bd1.add(jSpinner4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, -1));
 
         Total.setBackground(new java.awt.Color(255, 255, 255));
         Total.setForeground(new java.awt.Color(255, 255, 255));
@@ -334,7 +331,13 @@ public class ComboFamiliar extends javax.swing.JFrame {
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
         bd2.add(jSpinner3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
 
+        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        bd2.add(jSpinner5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, -1));
+
         bd1.add(bd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(2023, 2023, null, 1));
+        bd1.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, -1, -1));
 
         bd.add(bd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -361,29 +364,45 @@ public class ComboFamiliar extends javax.swing.JFrame {
     }//GEN-LAST:event_SpnNochesStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int dia = (int) diasInicio.getValue();
-        int mes = (int) MesInicio.getValue();
-        int año = (int) YearInicio.getValue();
-        String InicioEstadia = dia + "/" + mes + "/" + año;
+    int dia = (int) diasInicio.getValue();
+    int mes = (int) MesInicio.getValue();
+    int año = (int) YearInicio.getValue();
+    int noches = (int) SpnNoches.getValue();
 
-        FacturaCarrito carrito = new FacturaCarrito();
-        carrito.setId(ComCombos.getSelectedIndex());
-        carrito.setCombo(ComCombos.getSelectedItem().toString());
-        carrito.setInicioEstadia(InicioEstadia);
-        if(noche == 0){
+    // Calcula la fecha de inicio
+    Calendar calendarInicio = Calendar.getInstance();
+    calendarInicio.set(año, mes - 1, dia); // El mes es de base 0, así que resta 1
+
+    // Realiza la operación matemática para calcular la fecha de salida
+    Calendar calendarSalida = (Calendar) calendarInicio.clone(); // Clona el calendario de inicio
+    calendarSalida.add(Calendar.DAY_OF_MONTH, noches); // Agrega el número de noches para obtener la fecha de salida
+
+    // Formatea la fecha de inicio y la fecha de salida
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    String fechaInicio = dateFormat.format(calendarInicio.getTime());
+    String fechaSalida = dateFormat.format(calendarSalida.getTime());
+
+    FacturaCarrito carrito = new FacturaCarrito();
+    carrito.setId(ComCombos.getSelectedIndex());
+    carrito.setCombo(ComCombos.getSelectedItem().toString());
+    carrito.setInicioEstadia(fechaInicio);
+    
+    if(noche == 0){
         noche += 1;
-        }
-        if(precio == 0){
+    }
+    
+    if(precio == 0){
         precio += 200;
-        }
-        carrito.setPrecio(precio*noche);
-        carrito.setNoches(noche);
+    }
+    
+    carrito.setPrecio(precio * noche);
+    carrito.setNoches(fechaSalida);
 
-        ListaVenta.add(carrito);
+    ListaVenta.add(carrito);
 
-        Carrito formCarrito = new Carrito(ListaVenta);
-        formCarrito.setVisible(true);
-        this.setVisible(false);
+    Carrito formCarrito = new Carrito(ListaVenta);
+    formCarrito.setVisible(true);
+    this.setVisible(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -450,6 +469,7 @@ public class ComboFamiliar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComCombos;
     public static javax.swing.JComboBox<String> ComCombos1;
+    private javax.swing.JLabel Familiar;
     private javax.swing.JLabel Fondo_madera;
     private javax.swing.JLabel Fondo_madera1;
     private javax.swing.JLabel Fondo_madera2;
@@ -469,7 +489,6 @@ public class ComboFamiliar extends javax.swing.JFrame {
     private javax.swing.JPanel bd2;
     private javax.swing.JSpinner diasInicio;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -494,8 +513,8 @@ public class ComboFamiliar extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
+    private javax.swing.JSpinner jSpinner5;
     // End of variables declaration//GEN-END:variables
 }
